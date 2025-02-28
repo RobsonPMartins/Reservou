@@ -1,0 +1,39 @@
+<!-- Navbar -->
+<div class="flex items-center justify-between bg-white shadow-md">
+    <!-- Logo -->
+    <div>
+        <img src="logo.png" alt="" class="w-24 h-24">
+    </div>
+
+    <!-- Menu Desktop -->
+    <div class="hidden md:flex gap-4">
+        <ul class="flex gap-4 text-gray-700">
+            <li><a href="#footer" class="cursor-pointer text-blue font-semibold hover:text-azure">Sobre nós</a></li>
+            <li><a href="#home" class="cursor-pointer text-blue font-semibold hover:text-azure">Home</a></li>
+            <li><a href="#footer" class="cursor-pointer text-blue font-semibold hover:text-azure">Contact</a></li>
+        </ul>
+    </div>
+
+
+    <!-- Botão de Gerenciar -->
+    <div class="hidden md:block mr-2">
+        <button (click)="irParaGerenciar()" class="bg-blue md:text-white px-4 py-2 rounded-md hover:bg-azure hover:text-white">
+            Gerenciar
+        </button>
+    </div>
+
+    <!-- Ícone do Menu Mobile -->
+    <div class="flex justify-center items-center md:hidden">
+        <button (click)="toggleMenu()" class="text-gray-700 w-10 h-10 text-xl">
+            <i class="pi pi-bars text-blue text-bold"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Menu Mobile -->
+<div *ngIf="menuAberto" class="md:hidden flex flex-col items-end gap-4 bg-white p-4 border-t">
+
+    <button (click)="irParaGerenciar()" class="bg-blue text-white px-4 py-2 rounded-md hover:bg-azure hover:text-white">
+        Gerenciar
+    </button>
+</div>

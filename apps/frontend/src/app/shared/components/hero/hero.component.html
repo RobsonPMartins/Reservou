@@ -1,0 +1,21 @@
+<!-- Cards -->
+<div id="home" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+    <div *ngFor="let reserva of reservasFiltradas" class="border-2 p-4 rounded-lg shadow-md">
+        <img [src]="reserva.imagem" alt="Imagem da reserva" class="w-full h-48 object-cover rounded-md">
+        <h2 class="mt-2 font-semibold">{{ reserva.estado }} - {{ reserva.cidade }}</h2>
+        <p><strong>Check-in:</strong> {{ checkinData | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Check-out:</strong> {{ checkoutData | date:'dd/MM/yyyy' }}</p>
+
+        <div *ngIf="qtdHospedes | keyvalue as hospedes">
+            <h3 class="font-semibold mt-2">Hóspedes:</h3>
+            <p *ngFor="let hospede of hospedes">
+                {{ hospede.key }}: {{ hospede.value }}
+            </p>
+        </div>
+       
+        <button (click)="adicionarAoCarrinho(reserva)"
+            class="bg-blue text-white p-2 rounded mt-2 w-full hover:bg-azure hover:text-white">
+            Adicionar ao Carrinho
+        </button>
+    </div>
+</div>

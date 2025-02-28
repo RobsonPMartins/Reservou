@@ -1,0 +1,16 @@
+
+<app-nav></app-nav>
+
+<app-header 
+  (estadoSelecionado)="onEstadoSelecionado($event)"
+  (datasSelecionadas)="atualizarDatas($event)"
+  (hospedesMudaram)="atualizarHospedes($event)"
+></app-header>
+
+<app-hero 
+  [estadoSelecionado]="estadoSelecionado"
+  [checkinData]="checkinData"
+  [checkoutData]="checkoutData"
+  [qtdHospedes]="qtdHospedes"
+></app-hero>
+

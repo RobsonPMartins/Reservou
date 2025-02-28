@@ -1,0 +1,41 @@
+<app-nav-gerenciar></app-nav-gerenciar>
+
+<h2 class="text-3xl font-semibold text-gray-900 text-center my-6">📋 Reservas Recebidas</h2>
+
+<div class="overflow-x-auto shadow-lg rounded-lg p-4">
+  <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+    <thead class="bg-azure text-white sticky top-0">
+      <tr>
+        <th class="py-2 px-6 text-red text-center font-medium uppercase">Estado</th>
+        <th class="py-2 px-6 text-red text-center font-medium uppercase">Cidade</th>
+        <th class="py-2 px-6 text-red text-center font-medium uppercase">Check-in</th>
+        <th class="py-2 px-6 text-red text-center font-medium uppercase">Check-out</th>
+        <th class="py-2 px-6 text-red text-center font-medium uppercase">Hóspedes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reserva of reservas" class="border-b even:bg-gray-50 hover:bg-gray-100 transition">
+        <td class="py-2 px-6 text-center text-gray-700">{{ reserva.estado }}</td>
+        <td class="py-2 px-6 text-center text-gray-700">{{ reserva.cidade }}</td>
+        <td class="py-2 px-6 text-center text-gray-700">{{ reserva.checkin }}</td>
+        <td class="py-2 px-6 text-center text-gray-700">{{ reserva.checkout }}</td>
+        <td class="py-2 px-6 text-center text-gray-700">
+          <div class="flex justify-center items-center flex-col">
+            <span class="flex items-center">
+              <strong>👨‍👩‍👧‍👦 Adultos:</strong> {{ reserva.hospedes.Adultos }}
+            </span>
+            <span class="flex items-center">
+              <strong>🧒 Crianças:</strong> {{ reserva.hospedes.Criancas }}
+            </span>
+            <span class="flex items-center">
+              <strong>👶 Bebês:</strong> {{ reserva.hospedes.Bebes }}
+            </span>
+            <span class="flex items-center">
+              <strong>🐶 Pets:</strong> {{ reserva.hospedes.Pets }}
+            </span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

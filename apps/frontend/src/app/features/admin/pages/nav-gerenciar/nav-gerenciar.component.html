@@ -1,0 +1,35 @@
+<!-- Navbar -->
+<div class="flex items-center justify-between border-2 bg-white shadow-md">
+    <!-- Logo -->
+    <div>
+        <img src="logo.png" alt="" class="w-24 h-24">
+    </div>
+
+    <!-- Voltar ao Home Desktop -->
+    <div class="hidden md:flex gap-4">
+        <button (click)="irParaHome()" class="bg-white text-blue px-4 py-2 rounded-md hover:bg-white">
+            <b>Reservou</b>
+        </button>
+    </div>
+
+    <!-- Botão de Voltar ao Home -->
+    <div class="hidden md:block">
+        <button (click)="irParaHome()" class="bg-blue text-white px-4 py-2 rounded-md hover:bg-azure mr-2">
+            Home
+        </button>
+    </div>
+
+    <!-- Ícone (PrimeIcons) -->
+    <div class="md:hidden">
+        <button (click)="toggleMenu()" class="text-gray-700 text-2xl mr-2 text-blue">
+            <i class="pi pi-bars text-blue"></i>
+        </button>
+    </div>
+</div> 
+
+<!-- Btn Mobile voltar ao Home -->
+<div *ngIf="menuAberto" class="md:hidden flex flex-col items-end gap-4 bg-white p-4 border-t">
+    <button (click)="irParaHome()" class="bg-blue text-white px-4 py-2 rounded-md hover:bg-azure">
+        Home
+    </button>
+</div>

@@ -1,0 +1,26 @@
+<app-nav-login></app-nav-login>
+
+<!-- Login -->
+
+<div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+    <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
+        <h2 class="text-xl text-red font-bold text-center mb-4">Login de Admin</h2>
+
+        <div class="space-y-3">
+            <label for="email" class="sr-only">Email</label>
+            <input id="email" type="email" [(ngModel)]="email" placeholder="Email"
+                class="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+            <label for="senha" class="sr-only">Senha</label>
+            <input id="senha" type="password" [(ngModel)]="senha" placeholder="Senha"
+                class="w-full border rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+            <button (click)="login()" type="submit"
+                class="w-full bg-blue text-white p-3 rounded hover:bg-azure transition">
+                Entrar
+            </button>
+
+            <p *ngIf="erro" class="text-red-500 text-center font-semibold">{{ erro }}</p>
+        </div>
+    </div>
+</div>
