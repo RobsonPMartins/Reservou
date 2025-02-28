@@ -1,101 +1,90 @@
-# Reservou
+# Reservou - Sistema de Gerenciamento de Reservas de Hospedagem
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+## Descrição
+Reservou é um sistema web desenvolvido para gerenciar reservas de acomodações, permitindo que clientes pesquisem opções disponíveis, realizem reservas e que administradores gerenciem o inventário de acomodações e clientes.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+## Tecnologias Utilizadas
+- **Frontend:** Angular 19+, PrimeNG, Tailwind CSS
+- **Backend:** NestJS, MikroORM
+- **Banco de Dados:** PostgreSQL
+- **Monorepo:** Nx Nrwl
+- **Versionamento de Código:** Git
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Funcionalidades
 
-## Run tasks
+### Para Clientes:
+- **Pesquisar Acomodações Disponíveis**: Filtrar por tipo, localização e capacidade.
+- **Realizar Reserva**: Selecionar acomodação, preencher dados e confirmar reserva.
+- **Gerenciar Reservas**: Listar e cancelar reservas com pelo menos 24h de antecedência.
 
-To run the dev server for your app, use:
+### Para Administradores:
+- **Gerenciar Acomodações**: Adicionar, editar, excluir e alterar status das acomodações.
+- **Gerenciar Reservas**: Listar todas as reservas e cancelar manualmente, se necessário.
 
+## Instalação e Execução
+
+### 1. Clonar o Repositório
 ```sh
-npx nx serve frontend
+ git clone https://github.com/seu-usuario/reservou.git
+ cd reservou
 ```
 
-To create a production bundle:
-
+### 2. Instalar Dependências
 ```sh
-npx nx build frontend
+yarn install
 ```
 
-To see all available targets to run for a project, run:
+### 3. Configurar o Banco de Dados
+- Criar um banco de dados PostgreSQL.
+- Configurar as variáveis de ambiente no arquivo `.env`:
 
-```sh
-npx nx show project frontend
+```env
+DATABASE_URL=postgres://usuario:senha@localhost:5432/reservou
+JWT_SECRET=sua_chave_secreta
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
-
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Add new projects
-
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
-
-Use the plugin's generator to create new projects.
-
-To generate a new application, use:
-
+### 4. Executar Migrações
 ```sh
-npx nx g @nx/angular:app demo
+yarn db:migrate
 ```
 
-To generate a new library, use:
-
+### 5. Iniciar o Backend
 ```sh
-npx nx g @nx/angular:lib mylib
+yarn start:server
 ```
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
-
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Set up CI!
-
-### Step 1
-
-To connect to Nx Cloud, run the following command:
-
+### 6. Iniciar o Frontend
 ```sh
-npx nx connect
+yarn start:client
 ```
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
-
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-### Step 2
-
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
+## Estrutura do Projeto
+```
+reservou/
+│-- apps/
+│   ├── frontend/ (Frontend Angular)
+│   ├── backend/ (Backend NestJS)
+│-- libs/ (Bibliotecas compartilhadas)
+│-- .env
+│-- nx.json
+│-- README.md
+│-- package.json
 ```
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Deploy
+- **Frontend:** Vercel
+- **Backend:** Render
+- **Banco de Dados:** Railway ou Supabase
 
-## Install Nx Console
+## Autenticação e Autorização
+- Admins e clientes possuem acessos diferenciados.
+- Autenticação JWT.
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+## Melhorias Futuras
+- Implementação de mapas para exibir a localização das acomodações.
+- Envio de emails automáticos de confirmação e cancelamento de reserva.
+- Sistema de pagamento online.
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+## Contato
+Caso tenha dúvidas ou sugestões, entre em contato pelo email `robson.p.martins2020@gmail.com`.
 
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
