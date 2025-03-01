@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
-import { HomeComponent } from './features/clients/pages/home/home.component';
-import { CartComponent } from './features/clients/pages/cart/cart.component';
-import { GerenciarComponent } from './features/admin/pages/gerenciar/gerenciar.component';
+import { HomeComponent } from './core/services/features/clients/pages/home/home.component';
+import { CartComponent } from './core/services/features/clients/pages/cart/cart.component';
+import { GerenciarComponent } from './core/services/features/admin/pages/gerenciar/gerenciar.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './core/guard/auth.guard';
 

@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 })
 export class ReservaService {
 
-    private apiUrl = 'http://localhost:3000/reservas'; 
+    private apiUrl = 'https://reservou-backend.onrender.com'; 
     private storageKey = 'reservaSelecionada';
 
     constructor(private http: HttpClient) {}
