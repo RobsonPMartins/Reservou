@@ -8,7 +8,6 @@ config();
 const mikroOrmConfig: MikroOrmModuleOptions = {
   driver: PostgreSqlDriver,
   clientUrl: process.env.DATABASE_URL,
-  dbName: process.env.DATABASE_NAME || 'nome_do_banco',
   entities: [Reserva],
   migrations: {
     path: 'dist/migrations',
@@ -24,6 +23,5 @@ const mikroOrmConfig: MikroOrmModuleOptions = {
     },
   },
 };
-
-
+// log
 export default mikroOrmConfig;
